@@ -1,12 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import { ToggleButton, ToggleButtonGroup } from "./MyToggleButton";
-import {
-  ToggleButtonGroup as MuiToggleButtonGroup,
-  ToggleButton as MuiToggleButton,
-  createTheme,
-  ThemeProvider,
-} from "@mui/material";
+import { ToggleButton, ToggleButtonGroup } from "./ToggleButton";
+import { createTheme, ThemeProvider } from "@mui/material";
 import styled from "styled-components";
 
 const theme = createTheme({
@@ -64,14 +59,4 @@ const StyledForm = styled.form`
   padding: 0;
   display: flex;
   align-items: flex-start;
-`;
-
-const StyledMuiToggleButtonGroup = styled(MuiToggleButtonGroup)`
-  &.MuiToggleButtonGroup-root {
-    border-radius: 0;
-  }
-  & .MuiToggleButton-root {
-    border-radius: 0;
-    text-transform: none;
-  }
 `;
