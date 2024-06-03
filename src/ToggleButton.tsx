@@ -17,7 +17,7 @@ export function ToggleButton({
   return (
     <ButtonBase component="label">
       {children}
-      <StyledInput
+      <input
         type="radio"
         name={name}
         value={value}
@@ -27,10 +27,6 @@ export function ToggleButton({
     </ButtonBase>
   );
 }
-
-const StyledInput = styled.input`
-  display: none;
-`;
 
 const BACKGROUND_COLOR = "rgba(255, 255, 255, 0.12)";
 const TEXT_COLOR = "rgba(255, 255, 255, 0.38)";
@@ -79,7 +75,12 @@ export const ToggleButtonGroup = styled.div<{
     user-select: none;
     border-collapse: collapse;
   }
-
+  & > label > input {
+    appearance: none;
+    // prevent it from showing a blue outline when focused,
+    // which happens even if appearance is none
+    outline: none;
+  }
   display: inline-flex;
   flex-direction: ${({ $orientation = "horizontal" }) =>
     $orientation === "vertical" ? "column" : "row"};
