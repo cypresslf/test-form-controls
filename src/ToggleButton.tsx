@@ -1,5 +1,5 @@
 import { ButtonBase } from "@mui/material";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export function ToggleButton({
   value,
@@ -35,11 +35,24 @@ const StyledInput = styled.input`
 const BACKGROUND_COLOR = "rgba(255, 255, 255, 0.12)";
 const TEXT_COLOR = "rgba(255, 255, 255, 0.38)";
 const BORDER_WIDTH = 1;
-export const ToggleButtonGroup = styled.div`
-  & > label + label {
-    border-left-color: transparent;
-    margin-left: -${BORDER_WIDTH}px;
-  }
+export const ToggleButtonGroup = styled.div<{
+  $orientation?: "vertical" | "horizontal";
+}>`
+  ${({ $orientation = "horizontal" }) =>
+    $orientation === "vertical"
+      ? css`
+          & > label + label {
+            border-top-color: transparent;
+            margin-top: -${BORDER_WIDTH}px;
+          }
+        `
+      : css`
+          & > label + label {
+            border-left-color: transparent;
+            margin-left: -${BORDER_WIDTH}px;
+          }
+        `}
+
   & > label:has(> input:hover) {
     background-color: rgba(255, 255, 255, 0.05);
     color: ${TEXT_COLOR};
@@ -68,4 +81,6 @@ export const ToggleButtonGroup = styled.div`
   }
 
   display: inline-flex;
+  flex-direction: ${({ $orientation = "horizontal" }) =>
+    $orientation === "vertical" ? "column" : "row"};
 `;

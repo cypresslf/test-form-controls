@@ -20,7 +20,7 @@ function App() {
           console.log(new FormData(event.currentTarget));
         }}
       >
-        <ToggleButtonGroup>
+        <ToggleButtonGroup $orientation="vertical">
           <ToggleButton
             name="radioInput"
             value="left"
