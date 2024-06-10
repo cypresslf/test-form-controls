@@ -62,9 +62,12 @@ export const ToggleButtonGroup = styled.div<{
     border-collapse: collapse;
   }
   & > label > input {
-    appearance: none;
-    // prevent it from showing a blue outline when focused,
-    // which happens even if appearance is none
+    // we cannot use appearance: none or display: none because that will
+    // prevent electron from showing the tooltip for form validation like
+    // "please select one of these options" when it's required
+    position: absolute;
+    opacity: 0;
+    // prevent it from showing a blue outline when focused
     outline: none;
   }
   display: inline-flex;
