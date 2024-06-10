@@ -1,29 +1,15 @@
 import { ButtonBase } from "@mui/material";
+import { InputHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
 
 export function ToggleButton({
-  value,
-  name,
-  checked,
-  onChange,
   children,
-}: {
-  value: string;
-  name: string;
-  checked: boolean;
-  onChange: (value: string) => void;
-  children: React.ReactNode;
-}) {
+  ...props
+}: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <ButtonBase component="label">
       {children}
-      <input
-        type="radio"
-        name={name}
-        value={value}
-        checked={checked}
-        onChange={(event) => onChange(event.target.value)}
-      />
+      <input {...props} type="radio" />
     </ButtonBase>
   );
 }

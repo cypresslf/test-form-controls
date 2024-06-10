@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./App.css";
 import { ToggleButton, ToggleButtonGroup } from "./ToggleButton";
 import { createTheme, ThemeProvider } from "@mui/material";
@@ -11,7 +11,9 @@ const theme = createTheme({
 });
 
 function App() {
-  const [alignment, setAlignment] = useState("left");
+  const [alignment, setAlignment] = useState<string>();
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) =>
+    setAlignment(event.target.value);
   return (
     <ThemeProvider theme={theme}>
       <StyledForm
@@ -25,7 +27,8 @@ function App() {
             name="radioInput"
             value="left"
             checked={alignment === "left"}
-            onChange={setAlignment}
+            onChange={handleChange}
+            required
           >
             Left
           </ToggleButton>
@@ -33,7 +36,8 @@ function App() {
             name="radioInput"
             value="center"
             checked={alignment === "center"}
-            onChange={setAlignment}
+            onChange={handleChange}
+            required
           >
             Center
           </ToggleButton>
@@ -41,7 +45,8 @@ function App() {
             name="radioInput"
             value="right"
             checked={alignment === "right"}
-            onChange={setAlignment}
+            onChange={handleChange}
+            required
           >
             Right
           </ToggleButton>
